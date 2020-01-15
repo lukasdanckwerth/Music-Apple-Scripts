@@ -1,4 +1,4 @@
-tell application "iTunes"
+tell application "Music"
 	if selection is not {} then
 		
 		set theMessage to "Please enter the year you want to set ..."
@@ -11,3 +11,4 @@ tell application "iTunes"
 		
 	end if
 end tell
+ 

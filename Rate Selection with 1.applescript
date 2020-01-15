@@ -1,4 +1,4 @@
-tell application "iTunes"
+tell application "Music"
 	if selection of front browser window is not {} then
 		set theSelection to selection of front browser window
 		repeat with aTrack in theSelection

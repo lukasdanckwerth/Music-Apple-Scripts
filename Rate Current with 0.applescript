@@ -1,4 +1,4 @@
-tell application "iTunes"
+tell application "Music"
 	if exists name of current track then
 		set rating of current track to 0
 		display notification "0 Stars for '" & name of current track & "'"

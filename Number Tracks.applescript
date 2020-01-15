@@ -1,4 +1,4 @@
-tell application "iTunes"
+tell application "Music"
 	if selection is not {} then
 		
 		set theTrackNumber to 0

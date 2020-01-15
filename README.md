@@ -1,4 +1,4 @@
-# de.aid.itunesapplescripts
+# Luigis Musics Scripts
 
 A Collection of AppleScipts to controll iTunes and manipulate Id3 Tags of .mp3 files in iTunes.
 

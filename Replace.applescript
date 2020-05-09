@@ -8,7 +8,7 @@ on findReplace(findText, replaceText, sourceText)
 	return sourceText
 end findReplace
 
-tell application "iTunes"
+tell application "Music"
 	if selection is not {} then
 		
 		set theSourceMessage to "Please enter the text you want to replace."
@@ -23,7 +23,7 @@ tell application "iTunes"
 			
 			set theTitle to name of aTrack
 			set theTitle to my findReplace(theSource, theReplacement, theTitle)
-
+			
 			set name of aTrack to theTitle
 			
 		end repeat

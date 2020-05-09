@@ -11,8 +11,8 @@ A Collection of AppleScipts to controll Music and manipulate Id3 Tags.
 | Append | Displays a dialog to input a text which is appended to the name of selected track(s) |
 | Append "(Instrumental)"  | Append the text "(Instrumental)" to the name of selected track(s)  |
 | Append "(Remix)"  | Append the text "(Remix)" to the name of the selected track(s) |
-| Correct Genres  | Correct the genre of the current selection |
-| Correct Names  | Correct the names of the current selection |
+| Correct Genres  | Correct the genre of the current selection (Needs tag-corrector) |
+| Correct Names  | Correct the names of the current selection (Needs tag-corrector) |
 | Features from Artist to Name  | Takes the features in the artist tag of the track and append it to the name |
 | Number Tracks  | Number the selected track(s) |
 | Rate Current with 0  | Set the rating of the current playing track to 0 |

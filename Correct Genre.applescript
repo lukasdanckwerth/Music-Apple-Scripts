@@ -27,7 +27,7 @@ tell application "Finder"
 			end if
 		end tell
 	else
-	
+		
 		-- tag-corrector doesn't exist
 		display dialog "Underlying TagCorrector binary (/usr/local/bin/tag-corrector) doesn't exist."
 	end if

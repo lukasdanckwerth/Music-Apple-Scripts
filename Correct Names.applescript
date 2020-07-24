@@ -1,8 +1,12 @@
 -- use Finder to check for tag-corrector existence
 tell application "Finder"
 	
+	set scriptsPath to folder "Scripts" of (folder "Music" of (folder "Library" of (path to home folder)))
+	set correctorFile to (file "tag-corrector" of scriptsPath) as alias
+	set correctorPath to quoted form of POSIX path of correctorFile
+	
 	-- check whether tag-corrector is installed on the computer
-	if (exists POSIX file "/usr/local/bin/tag-corrector") then
+	if (exists correctorFile) then
 		
 		-- use Music for genre correction
 		tell application "Music"
@@ -17,7 +21,7 @@ tell application "Finder"
 					set trackTitle to (name of curTrack) as Unicode text
 					
 					-- correct genre
-					set newTitle to do shell script "/usr/local/bin/tag-corrector correctName " & quoted form of trackTitle
+					set newTitle to do shell script correctorPath & " correctName " & quoted form of trackTitle
 					
 					-- if title was corrected set new title
 					if trackTitle is not equal to newTitle then
@@ -29,6 +33,6 @@ tell application "Finder"
 	else
 		
 		-- tag-corrector doesn't exist
-		display dialog "Underlying TagCorrector binary (/usr/local/bin/tag-corrector) doesn't exist."
+		display dialog "Underlying TagCorrector binary (" & correctorPath & ") doesn't exist."
 	end if
 end tell

@@ -1,10 +1,11 @@
+
 -- use Finder to check for tag-corrector existence
 tell application "Finder"
-
-	-- receive path to this script
-	set current_path0 to container of (path to me) as alias
-	set correctorPath to quoted form of ((POSIX path of current_path0) & "tag-corrector")
-
+	
+	set scriptsPath to folder "Scripts" of (folder "Music" of (folder "Library" of (path to home folder)))
+	set correctorPath to (file "tag-corrector" of scriptsPath) as alias
+	set correctorPath to quoted form of POSIX path of correctorPath
+	
 	-- use Music for genre correction
 	tell application "Music"
 		

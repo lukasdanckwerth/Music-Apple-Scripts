@@ -1,4 +1,4 @@
-tell application "iTunes"
+tell application "Music"
 	if selection is not {} then
 		
 		set theMessage to "Please enter the String you want to remove?"

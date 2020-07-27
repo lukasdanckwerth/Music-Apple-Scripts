@@ -24,9 +24,11 @@ tell application "Finder"
 					set newTitle to do shell script correctorPath & " correctName " & quoted form of trackTitle
 					
 					-- if title was corrected set new title
-					if trackTitle is not equal to newTitle then
-						set name of curTrack to newTitle
-					end if
+					considering case
+						if trackTitle is not equal to newTitle then
+							set name of curTrack to newTitle
+						end if
+					end considering
 				end repeat
 			end if
 		end tell

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo "PATH: $PATH"
+
+DRY=0
+INPUT_DIR="${HOME}/Library/Music/Scripts/Automation"
+
+if [[ ! -d "${INPUT_DIR}" ]] ; then 
+   echo "Directory does not exist: ${INPUT_DIR}"
+fi
+
+for FILE_PATH in $INPUT_DIR/*.applescript ;
+do
+   echo "FILE_PATH: ${FILE_PATH}"
+   if ((DRY == 0)) ; then
+      /usr/bin/osascript "${FILE_PATH}"
+      sleep 3
+   fi
+done

@@ -1,19 +1,60 @@
 #!/bin/bash
 
-echo "PATH: $PATH"
+# MARK: - PARSE PROPERTIES
 
+# only print which scripts would be executed
 DRY=0
+
+# only run if `Music.app` is open
+RUN_IF_OPEN=0
+
+# path of directory with scripts
 INPUT_DIR="${HOME}/Library/Music/Scripts/Automation"
 
-if [[ ! -d "${INPUT_DIR}" ]] ; then 
-   echo "Directory does not exist: ${INPUT_DIR}"
+# duration of sleep time between scripts
+SLEEP_DURATION=3
+
+
+
+# MARK: - PARSE ARGUMENTS
+
+# parse arguments
+while (( $# > 0 ))
+do
+   case ${1} in
+   -d | --dry          ) DRY=1 ;                                     shift  ;;
+   -o | --if-open      ) RUN_IF_OPEN=1 ;                             shift  ;;
+   -s | --sleep        ) SLEEP_DURATION="${2}" ;             shift ; shift  ;;
+   *                   ) die "Unknown argument: ${1}" ;              exit 0 ;;
+   esac
+done
+
+
+# MARK: - EXECUTION
+
+# check whether to only run if application is open
+if ((RUN_IF_OPEN != 0)) ; then
+   RUNNING_INSTANCES=$(ps aux | grep -v grep | grep -c -i "Music.app")
+   if [[ "${RUNNING_INSTANCES}" == "0" ]] ; then
+      echo "[run-automation] Application \"Music\" not running"
+      exit 0
+   fi
 fi
 
+# guard input directory existence
+if [[ ! -d "${INPUT_DIR}" ]] ; then 
+   echo "[run-automation] Directory does not exist: ${INPUT_DIR}"
+fi
+
+# execute all applescripts from input directory
 for FILE_PATH in $INPUT_DIR/*.applescript ;
 do
-   echo "FILE_PATH: ${FILE_PATH}"
+   SCRIPT_NAME=$(basename "${FILE_PATH}")
    if ((DRY == 0)) ; then
+      echo "[run-automation] run script: ${SCRIPT_NAME}"
       /usr/bin/osascript "${FILE_PATH}"
-      sleep 3
+      sleep "${SLEEP_DURATION}"
+   else
+      echo "[run-automation] DRY run script: ${SCRIPT_NAME}"
    fi
 done

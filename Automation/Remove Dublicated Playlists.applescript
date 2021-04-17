@@ -1,8 +1,4 @@
 
-log ("Removing dublicated playlists")
-
-delay 10
-
 on removePlaylist(thePlaylistName)
 	
 	tell application "Music"
@@ -19,14 +15,12 @@ on removePlaylist(thePlaylistName)
 				log ("Playlist has no tracks '" & thePlaylistName & "'")
 			end if
 			
+			delay 2
+			
 		on error theErrorMessage
-			
-			log ("Cant't receive tracks of playlist '" & thePlaylistName & "'")
-			log (theErrorMessage)
-			
-			return
-			
+			log ("No Playlist '" & thePlaylistName & "' (" & theErrorMessage & ")")
 		end try
+		
 	end tell
 end removePlaylist
 
@@ -44,5 +38,3 @@ my removePlaylist("YouTube Automator 3")
 my removePlaylist("YouTube Automator 4")
 my removePlaylist("YouTube Automator 5")
 my removePlaylist("YouTube Automator 6")
-
-log ("Finished Removing dublicated playlists")

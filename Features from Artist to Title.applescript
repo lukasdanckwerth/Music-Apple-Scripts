@@ -2,10 +2,9 @@ tell application "Music"
 	if selection is not {} then
 		repeat with curTrack in selection
 			
-			set tmpArtist to (artist of curTrack) as Unicode text
-			set formatedArtist to do shell script "~/Library/iTunes/Scripts/ID3Corrector -t " & quoted form of tmpArtist
-			set onlyArtist to do shell script "~/Library/iTunes/Scripts/ID3Corrector -oa " & "\"" & formatedArtist & "\""
-			set onlyFeat to do shell script "~/Library/iTunes/Scripts/ID3Corrector -of " & "\"" & formatedArtist & "\""
+			set theArtistString to (artist of curTrack) as Unicode text
+			set onlyArtist to do shell script "~/Library/Music/Scripts/tag-corrector getArtist " & "\"" & theArtistString & "\""
+			set onlyFeat to do shell script "~/Library/Music/Scripts/tag-corrector getFeature " & "\"" & theArtistString & "\""
 			
 			if onlyArtist is not "" then
 				set artist of curTrack to onlyArtist

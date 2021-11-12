@@ -1,6 +1,7 @@
 tell application "Music"
-	if selection is not {} then
-		repeat with curTrack in selection
+set theSelection to selection of front browser window
+	if theSelection is not {} then
+		repeat with curTrack in theSelection
 			
 			set theArtistString to (artist of curTrack) as Unicode text
 			set onlyArtist to do shell script "~/Library/Music/Scripts/tag-corrector getArtist " & "\"" & theArtistString & "\""

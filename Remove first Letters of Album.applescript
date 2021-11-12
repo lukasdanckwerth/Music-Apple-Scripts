@@ -1,12 +1,18 @@
-set countToRemoveFromStart to the text returned of (display dialog "Please enter the Number of Letters to remove?" default answer "")
+
 
 tell application "Music"
 	if selection is not {} then
+		set firstTrack to first item of selection
+		set trackName to album of firstTrack
+		set theMessage to "Please enter the number of character to remove from the beginning of the album title \"" & trackName & "\"?"
+		set countToRemoveFromStart to the text returned of (display dialog theMessage default answer "")
 		repeat with curTrack in selection
 			set trackAlbum to the album of curTrack
 			set trackAlbum to text (countToRemoveFromStart + 1) thru -1 of trackAlbum
 			set album of curTrack to trackAlbum
 		end repeat
+	else
+		display dialog "Can't remove characters from the beginning of the album title because no tracks are selcted."
 	end if
 end tell
 

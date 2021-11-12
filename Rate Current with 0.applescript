@@ -1,11 +1,11 @@
 tell application "Music"
 	if exists name of current track then
-		set rating of current track to 0
 		set theName to name of current track
 		set theArtist to artist of current track
+		set rating of current track to 0
 		play (next track)
 		tell application "Finder"
-		display notification "0 Stars for '" & theName & "' from " & theArtist
+			display notification "0 Stars for '" & theName & "' from " & theArtist
 		end tell
 	else
 		display dialog "No track playing." buttons {"Cancel"} default button 1 with icon 0 giving up after 30

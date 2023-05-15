@@ -4,8 +4,8 @@ set theSelection to selection of front browser window
 		repeat with curTrack in theSelection
 			
 			set theArtistString to (artist of curTrack) as Unicode text
-			set onlyArtist to do shell script "~/Library/Music/Scripts/tag-corrector getArtist " & "\"" & theArtistString & "\""
-			set onlyFeat to do shell script "~/Library/Music/Scripts/tag-corrector getFeature " & "\"" & theArtistString & "\""
+			set onlyArtist to do shell script "/usr/local/bin/tag-correct getArtist " & "\"" & theArtistString & "\""
+			set onlyFeat to do shell script "/usr/local/bin/tag-correct getFeature " & "\"" & theArtistString & "\""
 			
 			if onlyArtist is not "" then
 				set artist of curTrack to onlyArtist

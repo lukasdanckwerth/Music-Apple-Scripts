@@ -2,7 +2,7 @@
 
 //
 //  main.swift
-//  ID3TagCorrector
+//  tag-correct
 //
 //  Created by Lukas Danckwerth on 08.08.19.
 //  Copyright © 2019, 2020, 2021 Lukas Danckwerth. All rights reserved.
@@ -100,14 +100,14 @@ extension FileManager {
     /// Reference to the `URL` of the main directory.
     static let mainDirectoryURL = `default`
         .homeDirectoryForCurrentUser
-        .appendingPathComponent(".tag-corrector", isDirectory: true)
+        .appendingPathComponent(".tag-correct", isDirectory: true)
     
     /// Reference to the `URL` of tools application support directory in the library folder.
     static let applicationSuportDirectory = `default`
         .homeDirectoryForCurrentUser
         .appendingPathComponent("Library", isDirectory: true)
         .appendingPathComponent("Application Support", isDirectory: true)
-        .appendingPathComponent("de.aid.tag-corrector", isDirectory: true)
+        .appendingPathComponent("de.aid.tag-correct", isDirectory: true)
     
     /// Reference to the file containing genre corrections.
     static var incorrectGenresFileURL = fileURL(for: "incorrect-genres")
@@ -281,7 +281,7 @@ extension Array where Element == String {
 /// The string containing a help text for this tool.
 let help = """
 
-usage: tag-corrector <command> [<args>]
+usage: tag-correct <command> [<args>]
 
 COMMANDS:
 
@@ -292,7 +292,7 @@ COMMANDS:
 \("   ")\("remove".bold)  <file> <name>     Removes all words in the given file from the given name
 
 \("   ")\("--help".bold)                   Print this help text and exit
-\("   ")\("--version".bold)                Print the version of tag-corrector
+\("   ")\("--version".bold)                Print the version of tag-correct
 
 """
 

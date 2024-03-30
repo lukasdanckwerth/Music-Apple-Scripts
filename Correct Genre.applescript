@@ -16,7 +16,7 @@ tell application "Finder"
 			repeat with curTrack in selection
 				
 				-- receive old genre
-				set oldGenre to (genre of curTrack) as Unicode text
+				set oldGenre to (genre of curTrack)
 				
 				-- correct genre
 				set newGenre to do shell script correctorPath & " correctGenre " & quoted form of oldGenre

@@ -1,14 +1,14 @@
 -- use Finder to check for tag-corrector existence
 tell application "Finder"
 	
-	set correctorFile to alias "usr:local:bin:tag-correct"
-	-- set correctorFile to (file "tag-correct" of scriptsPath) as alias
-	-- set correctorFile to POSIX path of "/usr/local/bin/tag-correct"
-	set correctorPath to quoted form of POSIX path of correctorFile
+	set scriptsPath to folder "Scripts" of (folder "Music" of (folder "Library" of (path to home folder)))
+	set correctorPath to (file "tag-corrector" of scriptsPath) as alias
 	
 	-- check whether tag-corrector is installed on the computer
-	if exists correctorFile then
-	
+	if exists correctorPath then
+		
+		set correctorPath to quoted form of POSIX path of correctorPath
+		
 		-- use Music for genre correction
 		tell application "Music"
 			

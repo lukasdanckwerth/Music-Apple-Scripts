@@ -7,6 +7,8 @@ tell application "Music"
 			set trackName to text (countToRemoveFromStart + 1) thru -1 of trackName
 			set name of curTrack to trackName
 		end repeat
+	else
+		display dialog "No Tracks selected."
 	end if
 end tell
 

@@ -14,6 +14,8 @@ tell application "Music"
             set AppleScript's text item delimiters to ASTID
             set name of aTrack to theTrackName
         end repeat
-    end if
+	else
+		display dialog "No Tracks selected."
+	end if
 end tell
 

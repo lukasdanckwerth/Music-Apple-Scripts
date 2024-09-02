@@ -27,5 +27,7 @@ tell application "Music"
 			set name of aTrack to theTitle
 			
 		end repeat
+	else
+		display dialog "No Tracks selected."
 	end if
 end tell

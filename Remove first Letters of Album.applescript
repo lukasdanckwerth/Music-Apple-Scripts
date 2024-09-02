@@ -1,5 +1,3 @@
-
-
 tell application "Music"
 	if selection is not {} then
 		set firstTrack to first item of selection
@@ -12,7 +10,7 @@ tell application "Music"
 			set album of curTrack to trackAlbum
 		end repeat
 	else
-		display dialog "Can't remove characters from the beginning of the album title because no tracks are selcted."
+		display dialog "No Tracks selected."
 	end if
 end tell
 
